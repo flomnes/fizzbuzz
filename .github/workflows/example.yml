@@ -20,7 +20,7 @@ jobs:
             echo "OR_TOOLS_TAG=${{ steps.read_file.outputs.json && fromJSON(steps.read_file.outputs.json).or-tools }}" >> $GITHUB_ENV
 
     - name: from env
-      run: echo ${{ env.or-tools }}
+      run: echo ${{ env.OR_TOOLS_TAG }}
     
     
 
