@@ -1,8 +1,6 @@
 name: Parse JSON from file
-
 on:
   push
-
 
 jobs:
   build:
@@ -21,7 +19,3 @@ jobs:
 
     - name: from env
       run: echo ${{ env.OR_TOOLS_TAG }}
-    
-    
-
-     
