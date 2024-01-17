@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout git repo
       uses: actions/checkout@latest
@@ -15,8 +16,7 @@ jobs:
       run: echo "json=$(tr -d '\n' deps)" >> $GITHUB_OUTPUT
 
     - name: fromJSON
-      needs: read_file
-      run: echo ${{ fromJSON(needs.read_file.outputs.json).or-tools }}
+      run: echo ${{ fromJSON(steps.read_file.outputs.json).or-tools }}
     
     
 
