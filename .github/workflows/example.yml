@@ -13,7 +13,7 @@ jobs:
 
     - name: Read file
       id: read_file
-      run: echo "json=$(cat deps.json)" >> $GITHUB_OUTPUT
+      run: echo "json=$(tr -d '\n' < deps.json)" >> $GITHUB_OUTPUT
 
     - name: fromJSON
       run: |
