@@ -16,7 +16,7 @@ jobs:
       run: echo "json=$(tr -d '\n' deps.json)" >> $GITHUB_OUTPUT
 
     - name: fromJSON
-      run:|
+      run: |
             echo ${{ steps.read_file.outputs.json }}
             echo ${{ steps.read_file.outputs.json && fromJSON(steps.read_file.outputs.json).or-tools }}
     
