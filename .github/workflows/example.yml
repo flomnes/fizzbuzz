@@ -1,0 +1,22 @@
+name: Parse JSON from file
+
+on:
+  push
+
+
+jobs:
+  build:
+    steps:
+    - name: Checkout git repo
+      uses: actions/checkout@latest
+
+    - name: Read file
+      id: read_file
+      run: echo "json=$(tr -d '\n' deps)" >> $GITHUB_OUTPUT
+
+    - name: fromJSON
+      run: echo ${{ fromJSON(read_file.outputs.json)["or-tools"] }}
+    
+    
+
+     

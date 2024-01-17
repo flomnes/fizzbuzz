@@ -1,0 +1,4 @@
+{
+    "or-tools": "v9.8-rte1.0",
+    "simtest": "v8.8.2"
+}
