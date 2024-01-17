@@ -16,7 +16,7 @@ jobs:
 
     - name: fromJSON
       needs: read_file
-      run: echo ${{ fromJSON(needs.read_file.outputs.json)["or-tools"] }}
+      run: echo ${{ fromJSON(needs.read_file.outputs.json).or-tools }}
     
     
 
