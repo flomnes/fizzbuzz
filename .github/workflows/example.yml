@@ -12,7 +12,12 @@ jobs:
       run: |
            curl -o node-v20.17.0-linux-x64-glibc-217.tar.xz https://unofficial-builds.nodejs.org/download/release/v20.17.0/node-v20.17.0-linux-x64-glibc-217.tar.xz
            tar xvf node-v20.17.0-linux-x64-glibc-217.tar.xz
-           cp node-v20.17.0-linux-x64-glibc-217/bin/node /__e/node20/bin/node
+
+    - name: Add Node.js to PATH
+      run: echo "$PWD/node-v20.17.0-linux-x64-glibc-217/bin" >> $GITHUB_PATH
+
+    - name: Check Node.js version
+      run: node -v
 
     - name: Checkout
       uses: actions/checkout@v4
