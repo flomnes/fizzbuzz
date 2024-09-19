@@ -14,9 +14,6 @@ jobs:
         - /node20217:/__e/node20:ro,rshared
 
     steps:
-      - name: this will fail
-        uses: actions/checkout@v4
-
       - name: install nodejs20glibc2.17
         if: always()
         run: |
