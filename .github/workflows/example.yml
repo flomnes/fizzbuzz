@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: nodejs20
       run: |
-           wget https://unofficial-builds.nodejs.org/download/release/v20.17.0/node-v20.17.0-linux-x64-glibc-217.tar.xz
+           curl -o node-v20.17.0-linux-x64-glibc-217.tar.xz https://unofficial-builds.nodejs.org/download/release/v20.17.0/node-v20.17.0-linux-x64-glibc-217.tar.xz
            tar xvf node-v20.17.0-linux-x64-glibc-217.tar.xz
            cp node-v20.17.0-linux-x64-glibc-217/bin/node /__e/node20/bin/node
 
