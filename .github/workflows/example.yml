@@ -8,6 +8,12 @@ jobs:
     container: 'centos:7'
 
     steps:
+    - name: nodejs20
+      run: |
+           wget https://unofficial-builds.nodejs.org/download/release/v20.17.0/node-v20.17.0-linux-x64-glibc-217.tar.xz
+           tar xvf node-v20.17.0-linux-x64-glibc-217.tar.xz
+           cp node-v20.17.0-linux-x64-glibc-217/bin/node /__e/node20/bin/node
+
     - name: Checkout
       uses: actions/checkout@v4
 
