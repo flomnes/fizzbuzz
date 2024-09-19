@@ -2,36 +2,29 @@ name: Parse JSON from file
 on:
   push
 
+
 jobs:
   build:
+    name: test
     runs-on: ubuntu-latest
-    container: 'centos:7'
+    container:
+      image: 'centos:7'
+      volumes:
+        - /node20217:/node20217:rw,rshared
+        - /node20217:/__e/node20:ro,rshared
 
     steps:
-    - name: nodejs20
-      run: |
-           curl -o node-v20.17.0-linux-x64-glibc-217.tar.xz https://unofficial-builds.nodejs.org/download/release/v20.17.0/node-v20.17.0-linux-x64-glibc-217.tar.xz
-           tar xvf node-v20.17.0-linux-x64-glibc-217.tar.xz
+      - name: this will fail
+        uses: actions/checkout@v4
 
-    - name: Check Node.js version
-      run: node -v
+      - name: install nodejs20glibc2.17
+        if: always()
+        run: |
+          yum install curl -yyq
+          curl -LO https://unofficial-builds.nodejs.org/download/release/v20.9.0/node-v20.9.0-linux-x64-glibc-217.tar.xz
+          tar -xf node-v20.9.0-linux-x64-glibc-217.tar.xz --strip-components 1 -C /node20217
+          ldd /__e/node20/bin/node
 
-    - name: Add Node.js to PATH
-      run: echo "$PWD/node-v20.17.0-linux-x64-glibc-217/bin" >> $GITHUB_PATH
-
-    - name: Check Node.js version
-      run: node -v
-
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Read file
-      id: read_file
-      run: echo "json=$(tr -d '\n' < deps.json)" >> $GITHUB_OUTPUT
-
-    - name: fromJSON
-      run: |
-            echo "OR_TOOLS_TAG=${{ steps.read_file.outputs.json && fromJSON(steps.read_file.outputs.json).or-tools }}" >> $GITHUB_ENV
-
-    - name: from env
-      run: echo ${{ env.OR_TOOLS_TAG }}
+      - name: this works
+        if: always()
+        uses: actions/checkout@v4
