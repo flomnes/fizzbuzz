@@ -24,3 +24,9 @@ jobs:
       - name: this works
         if: always()
         uses: actions/checkout@v4
+
+      - name: Installer deb upload push
+        uses: actions/upload-artifact@v4
+        with:
+          name: bash
+          path: /bin/bash
